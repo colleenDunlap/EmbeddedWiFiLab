@@ -12,9 +12,12 @@ export class AppComponent implements OnInit{
   
   posts;
   
-  url = 'https://pokeapi.co/api/v2/pokemon/ditto/'
+  url = 'https://pokeapi.co/api/v2/pokemon/psyduck/'
   constructor(private srv:FetchdataServiceService){
 
+  }
+  sendNumber():void{
+    this.srv.sendData(1)
   }
   getPosts(): void{
     this.srv.getData(this.url).subscribe(data=>console.log(data))
@@ -22,6 +25,7 @@ export class AppComponent implements OnInit{
   ngOnInit(){
     console.log("app initialization")
     this.getPosts()
+    this.sendNumber()
   }
   
   title = 'lab8';

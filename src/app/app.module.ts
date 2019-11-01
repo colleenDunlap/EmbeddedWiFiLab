@@ -4,6 +4,9 @@ import { NgModule } from '@angular/core';
 import{HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+
 @NgModule({
   declarations: [
     AppComponent
