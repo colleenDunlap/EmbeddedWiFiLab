@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient, HttpHeaders} from '@angular/common/http'
+
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 @Injectable({
@@ -13,8 +14,13 @@ export class FetchdataServiceService {
     return this.http.get(url)
   }
   sendData (myNumber) {
-    var headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    console.log(this.http.post('http://192.168.4.2:80/?led=1', "AT").subscribe(data=>console.log(data)))
+    //var headers = new Headers();
+    //let headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/x-www-form-urlencoded'
+      })
+    };
+    console.log(this.http.post('http://192.168.4.2:80/','led=1', httpOptions).subscribe(data=>console.log(data)))
   }
 }
